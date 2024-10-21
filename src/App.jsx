@@ -1,7 +1,8 @@
 import "./App.css";
 import Login from "./views/login/login.jsx";
 import Error from "./views/error/error.jsx";
-import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+import Home from "./views/home/home.jsx";
+import { createBrowserRouter, RouterProvider} from "react-router-dom";
 
 const router = createBrowserRouter([
   {
@@ -9,6 +10,10 @@ const router = createBrowserRouter([
     element: <Login />,
     errorElement: <Error />,
   },
+  {
+    path: "/home",
+    element: <Home/>,
+  }
 ]);
 
 function App() {
@@ -20,3 +25,4 @@ function App() {
 }
 
 export default App;
+
