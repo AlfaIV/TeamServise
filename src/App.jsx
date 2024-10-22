@@ -3,8 +3,9 @@ import Login from "./views/login/login.jsx";
 import Error from "./views/error/error.jsx";
 import Home from "./views/home/home.jsx";
 import User from "./views/user/user.jsx";
+import Staff from "./views/staff/staff.jsx";
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { patch } from "@mui/material";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +16,24 @@ const router = createBrowserRouter([
   {
     path: "/home",
     element: <Home />,
-    children: [{ path: "userProfile", element: <User /> }],
+    children: [
+      { 
+        path: "userProfile",
+        element: <User />
+      },
+      {
+        path: "Staff",
+        element: <Staff/>,
+      },
+      {
+        path: "teams",
+        element: <h1>teams</h1>,
+      },
+      {
+        path: "tasks",
+        element: <h1>tasks</h1>,
+      },
+    ],
   },
 ]);
 
