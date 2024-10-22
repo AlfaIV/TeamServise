@@ -2,7 +2,9 @@ import "./App.css";
 import Login from "./views/login/login.jsx";
 import Error from "./views/error/error.jsx";
 import Home from "./views/home/home.jsx";
-import { createBrowserRouter, RouterProvider} from "react-router-dom";
+import User from "./views/user/user.jsx";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { patch } from "@mui/material";
 
 const router = createBrowserRouter([
   {
@@ -12,8 +14,9 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element: <Home/>,
-  }
+    element: <Home />,
+    children: [{ path: "userProfile", element: <User /> }],
+  },
 ]);
 
 function App() {
@@ -25,4 +28,3 @@ function App() {
 }
 
 export default App;
-

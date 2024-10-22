@@ -25,7 +25,7 @@ const Error = () => {
       <Typography variant="body1" component="div" gutterBottom>
         Извините, но запрашиваемая вами страница не существует.
       </Typography>
-      <Button variant="contained" color="primary" onClick={() => navigate("/")}>
+      <Button variant="contained" color="primary" onClick={() => navigate("/home")}>
         Вернуться на главную
       </Button>
     </Box>
