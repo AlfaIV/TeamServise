@@ -5,6 +5,7 @@ import Home from "./views/home/home.jsx";
 import User from "./views/user/user.jsx";
 import Staff from "./views/staff/staff.jsx";
 import Team from "./views/team/team.jsx";
+import Tasks from "./views/tasks/tasks.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path: "tasks",
-        element: <h1>tasks</h1>,
+        element: <Tasks/>,
       },
     ],
   },
