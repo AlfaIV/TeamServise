@@ -4,6 +4,7 @@ import Error from "./views/error/error.jsx";
 import Home from "./views/home/home.jsx";
 import User from "./views/user/user.jsx";
 import Staff from "./views/staff/staff.jsx";
+import Team from "./views/team/team.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: "teams",
-        element: <h1>teams</h1>,
+        element: <Team/>,
       },
       {
         path: "tasks",
