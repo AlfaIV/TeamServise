@@ -1,12 +1,18 @@
-# Use the official NGINX image from Docker Hub
+FROM node:latest AS builder
+
+WORKDIR /app
+
+RUN npm install -g pnpm
+RUN git clone https://github.com/AlfaIV/TeamServise.git
+WORKDIR /app/TeamServise
+RUN pnpm install
+RUN pnpm run build
+
 FROM nginx:latest
 
-# Copy static files to the NGINX html directory
-COPY dist/ /usr/share/nginx/html
-COPY nginx.react.app.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/TeamServise/dist/ /usr/share/nginx/html 
+COPY --from=builder /app/TeamServise/nginx.react.app.conf /etc/nginx/conf.d/default.conf
 
-# Expose port 80
 EXPOSE 80
 
-# Start NGINX
 CMD ["nginx", "-g", "daemon off;"]
