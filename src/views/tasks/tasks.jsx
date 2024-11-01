@@ -1,15 +1,20 @@
 import React, { useState } from "react";
-import {
-  Container,
-  Grid,
-  Paper,
-  Typography,
-  Button,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
-} from "@mui/material";
+import { Container, Grid, Typography, Button } from "@mui/material";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: "50vw",
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
+
+import TaskStack from "../../components/taskStack/taskStack";
+import TaskModal from "../../components/taskModal/taskModal";
 
 const teams = [
   { id: 1, name: "Команда проекта: Солнышки" },
@@ -18,76 +23,63 @@ const teams = [
 ];
 
 const Tasks = () => {
-  const [task, setTask] = useState("");
-  const [selectedTeam, setSelectedTeam] = useState("");
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState({
+    plan: [
+      { name: 1, task: 123 },
+      { name: 1, task: 123 },
+      { name: 1, task: 123 },
+    ],
+    do: [
+      { name: 2, task: 123 },
+      { name: 2, task: 123 },
+      { name: 2, task: 123 },
+    ],
+    check: [
+      { name: 3, task: 123 },
+      { name: 3, task: 123 },
+      { name: 3, task: 123 },
+    ],
+    done: [
+      { name: 4, task: 123 },
+      { name: 4, task: 123 },
+      { name: 4, task: 123 },
+    ],
+  });
 
-  const handleAddTask = () => {
-    if (task && selectedTeam) {
-      setTasks([...tasks, { task, team: selectedTeam }]);
-      setTask("");
-      setSelectedTeam("");
-    }
-  };
+  const [openModal, setOpenModal] = useState(false);
 
   return (
-    <Container>
-      <Typography variant="h4" gutterBottom>
+    <Container maxWidth="xl" sx={{ marginTop: 4 }}>
+      <Typography variant="h4" gutterBottom align="center">
         Доска заданий
       </Typography>
+      <Button
+        onClick={() => setOpenModal(true)}
+        variant="contained"
+        color="primary"
+        sx={{ margin: 2 }}
+      >
+        Добавить задание
+      </Button>
+      <Button variant="contained" color="primary" sx={{ margin: 2 }}>
+        Удалить задание
+      </Button>
+      <TaskModal
+        externalOpenModel={{ get: openModal, set: setOpenModal }}
+        setTasks={setTasks}
+      ></TaskModal>
       <Grid container spacing={2}>
-        <Grid item xs={12}>
-          <Paper style={{padding: "16px" }}>
-            <Typography variant="h6">Создать задание</Typography>
-            <FormControl fullWidth margin="normal">
-              <InputLabel id="team-select-label">Выберите команду</InputLabel>
-              <Select
-                labelId="team-select-label"
-                value={selectedTeam}
-                onChange={(e) => setSelectedTeam(e.target.value)}
-              >
-                {teams.map((team) => (
-                  <MenuItem key={team.id} value={team.name}>
-                    {team.name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-            <FormControl fullWidth margin="normal">
-              <InputLabel height="40px" htmlFor="task-input">Задание</InputLabel>
-              <input
-                id="task-input"
-                type="text"
-                value={task}
-                onChange={(e) => setTask(e.target.value)}
-                style={{
-                  width: "100%",
-                  padding: "8px",
-                  borderRadius: "4px",
-                  border: "1px solid #ccc",
-                }}
-              />
-            </FormControl>
-            <Button height="40px" variant="contained" color="primary" onClick={handleAddTask}>
-              Создать задание
-            </Button>
-          </Paper>
+        <Grid item lg={3}>
+          <TaskStack tasks={tasks.plan} name={"Запланировано"}></TaskStack>
         </Grid>
-        <Grid item xs={12}>
-          <Paper style={{ padding: "16px" }}>
-            <Typography variant="h6">Список заданий</Typography>
-            {tasks.length === 0 ? (
-              <Typography variant="body1">Нет заданий</Typography>
-            ) : (
-              tasks.map((task, index) => (
-                <Paper key={index} style={{ padding: "8px", margin: "8px 0" }}>
-                  <Typography variant="body1">
-                    {task.task} - {task.team}
-                  </Typography>
-                </Paper>
-              ))
-            )}
-          </Paper>
+        <Grid item lg={3}>
+          <TaskStack tasks={tasks.do} name={"Выполняется"}></TaskStack>
+        </Grid>
+        <Grid item lg={3}>
+          <TaskStack tasks={tasks.check} name={"Проверка"}></TaskStack>
+        </Grid>
+        <Grid item lg={3}>
+          <TaskStack tasks={tasks.done} name={"Сделано"}></TaskStack>
         </Grid>
       </Grid>
     </Container>
