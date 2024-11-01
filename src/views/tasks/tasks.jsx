@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Container, Grid, Typography, Button } from "@mui/material";
+import {
+  Container,
+  Grid,
+  Typography,
+  Button,
+  Select,
+  MenuItem,
+} from "@mui/material";
 
 const style = {
   position: "absolute",
@@ -61,9 +68,11 @@ const Tasks = () => {
       >
         Добавить задание
       </Button>
-      <Button variant="contained" color="primary" sx={{ margin: 2 }}>
-        Удалить задание
-      </Button>
+      <Select sx={{ width: 200, margin: 2 }} label="Выбрать команду">
+        <MenuItem value={10}>Первая команда</MenuItem>
+        <MenuItem value={20}>Вторая команда</MenuItem>
+        <MenuItem value={30}>Третья команда</MenuItem>
+      </Select>
       <TaskModal
         externalOpenModel={{ get: openModal, set: setOpenModal }}
         setTasks={setTasks}

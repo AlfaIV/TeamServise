@@ -1,19 +1,34 @@
-import { Paper, Typography } from "@mui/material";
+import {
+  Paper,
+  Typography,
+  Card,
+  CardActions,
+  CardContent,
+  Button,
+} from "@mui/material";
 
 const TaskStack = ({ name, tasks }) => {
   return (
-    <Paper sx={{ height: 200, padding: 2, margin: 2 }}>
+    <Paper sx={{ padding: 2, margin: 2 }}>
       <Typography variant="h6">{name}</Typography>
       {tasks.length === 0 ? (
         <Typography variant="body1">Нет запланированных заданий</Typography>
       ) : (
         tasks.map((task, index) => (
-          <Paper key={index} style={{ padding: "8px", margin: "8px 0" }}>
-            <Typography variant="body1">
-              {task.name}
-              {task.task}
-            </Typography>
-          </Paper>
+          <Card sx={{ minWidth: 275, margin: 2 }}>
+            <CardContent>
+              <Typography variant="h5" component="div">
+                {task.name}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {task.task}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button size="small">Редактировать</Button>
+              <Button size="small">Удалить</Button>
+            </CardActions>
+          </Card>
         ))
       )}
     </Paper>
