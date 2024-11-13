@@ -44,9 +44,11 @@ const Tasks = () => {
 
   async function getTask() {
     try {
-      const response = await axios.get("http://10.4.56.94:3000/task");
-      console.log("Данные по задачам:", response.data);
-      response.data.forEach((task) => {
+      const teams = await axios.get("http://10.4.56.94:3000/team");
+      // console.log("Данные по командам:", teams.data);
+      const tasks = await axios.get("http://10.4.56.94:3000/task");
+      // console.log("Данные по задачам:", tasks.data);
+      tasks.data.forEach((task) => {
         switch (task.status) {
           case "To Do":
             setTasks((prevState) => ({
@@ -88,7 +90,7 @@ const Tasks = () => {
             break;
         }
       });
-      return response.data;
+      return {tasks: tasks.data, teams: teams.data};
     } catch (error) {
       console.error("Ошибка при получении данных задач:", error);
     }
@@ -117,10 +119,11 @@ const Tasks = () => {
       >
         Добавить задание
       </Button>
-      <Select sx={{ width: 200, margin: 2 }} label="Выбрать команду">
-        <MenuItem value={10}>Первая команда</MenuItem>
-        <MenuItem value={20}>Вторая команда</MenuItem>
-        <MenuItem value={30}>Третья команда</MenuItem>
+      <Select defaultValue={-1} sx={{ width: 200, margin: 2 }} label="Выбрать команду">
+        {data.teams.map((team) => (
+          <MenuItem value={team.teamid}>{team.team_name}</MenuItem>
+        ))}
+        <MenuItem value={-1}>Все команды</MenuItem>
       </Select>
       <TaskModal
         externalOpenModel={{ get: openModal, set: setOpenModal }}
