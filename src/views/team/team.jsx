@@ -8,10 +8,10 @@ const Team = () => {
   async function getTeams() {
     try {
       const response = await axios.get('http://10.4.56.94:3000/team');
-      console.log('Данные команд:', response.data);
+      // console.log('Данные команд:', response.data);
       return response.data;
     } catch (error) {
-      console.error('Ошибка при получении данных:', error);
+      console.error('Ошибка при получении данных команд:', error);
     }
   }
 

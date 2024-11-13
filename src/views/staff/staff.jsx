@@ -1,8 +1,29 @@
 import StaffCard from "../../components/staffCard/staffCard";
 import Grid from "@mui/material/Grid";
 import staffList from "../../views/staff/staffList";
+import axios from "axios";
+import { useQuery } from "react-query";
 
 const Staff = () => {
+  async function getTeams() {
+    try {
+      const response = await axios.get("http://10.4.56.94:3000/userprofile");
+      // console.log("Данные сотрудников:", response.data);
+      return response.data;
+    } catch (error) {
+      console.error("Ошибка при получении данных сотрудников:", error);
+    }
+  }
+
+  const { data, isLoading, isError } = useQuery("staff", getTeams);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error</div>;
+  }
   return (
     <>
       <Grid
@@ -16,8 +37,13 @@ const Staff = () => {
         wrap="wrap"
         margin={5}
       >
-        {staffList.map((staff) => (
-          <StaffCard key={staff.id} name={staff.name} description={staff.description} imgSrc={staff.avatar} />
+        {data.map((staff) => (
+          <StaffCard
+            key={staff.userprofileid}
+            name={` ${staff.lastname} ${staff.firstname}` }
+            description={staff.description}
+            imgSrc={staffList[0].avatar}
+          />
         ))}
       </Grid>
     </>
