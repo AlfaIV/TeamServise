@@ -8,6 +8,9 @@ import {
   MenuItem,
 } from "@mui/material";
 
+import axios from "axios";
+import { useQuery } from "react-query";
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -31,29 +34,75 @@ const teams = [
 
 const Tasks = () => {
   const [tasks, setTasks] = useState({
-    plan: [
-      { name: 1, task: 123 },
-      { name: 1, task: 123 },
-      { name: 1, task: 123 },
-    ],
-    do: [
-      { name: 2, task: 123 },
-      { name: 2, task: 123 },
-      { name: 2, task: 123 },
-    ],
-    check: [
-      { name: 3, task: 123 },
-      { name: 3, task: 123 },
-      { name: 3, task: 123 },
-    ],
-    done: [
-      { name: 4, task: 123 },
-      { name: 4, task: 123 },
-      { name: 4, task: 123 },
-    ],
+    plan: [],
+    do: [],
+    check: [],
+    done: [],
   });
 
   const [openModal, setOpenModal] = useState(false);
+
+  async function getTask() {
+    try {
+      const response = await axios.get("http://10.4.56.94:3000/task");
+      console.log("Данные по задачам:", response.data);
+      response.data.forEach((task) => {
+        switch (task.status) {
+          case "To Do":
+            setTasks((prevState) => ({
+              ...prevState,
+              plan: [
+                ...prevState.plan,
+                { name: task.title, task: task.description },
+              ],
+            }));
+            break;
+          case "In Progress":
+            setTasks((prevState) => ({
+              ...prevState,
+              do: [
+                ...prevState.do,
+                { name: task.title, task: task.description },
+              ],
+            }));
+            break;
+          case "Interview":
+            setTasks((prevState) => ({
+              ...prevState,
+              check: [
+                ...prevState.check,
+                { name: task.title, task: task.description },
+              ],
+            }));
+            break;
+          case "Completed":
+            setTasks((prevState) => ({
+              ...prevState,
+              done: [
+                ...prevState.done,
+                { name: task.title, task: task.description },
+              ],
+            }));
+            break;
+          default:
+            break;
+        }
+      });
+      return response.data;
+    } catch (error) {
+      console.error("Ошибка при получении данных задач:", error);
+    }
+  }
+
+  const { data, isLoading, isError } = useQuery("task", getTask);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error</div>;
+  }
 
   return (
     <Container maxWidth="xl" sx={{ marginTop: 4 }}>

@@ -5,7 +5,7 @@ import axios from "axios";
 import { useQuery } from "react-query";
 
 const Staff = () => {
-  async function getTeams() {
+  async function getStaff() {
     try {
       const response = await axios.get("http://10.4.56.94:3000/userprofile");
       // console.log("Данные сотрудников:", response.data);
@@ -15,7 +15,7 @@ const Staff = () => {
     }
   }
 
-  const { data, isLoading, isError } = useQuery("staff", getTeams);
+  const { data, isLoading, isError } = useQuery("staff", getStaff);
 
   if (isLoading) {
     return <div>Loading...</div>;
