@@ -7,6 +7,7 @@ import Staff from "./views/staff/staff.jsx";
 import Team from "./views/team/team.jsx";
 import Tasks from "./views/tasks/tasks.jsx";
 
+import { QueryClient, QueryClientProvider } from "react-query";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -19,30 +20,33 @@ const router = createBrowserRouter([
     path: "/home",
     element: <Home />,
     children: [
-      { 
+      {
         path: "userProfile",
-        element: <User />
+        element: <User />,
       },
       {
         path: "Staff",
-        element: <Staff/>,
+        element: <Staff />,
       },
       {
         path: "teams",
-        element: <Team/>,
+        element: <Team />,
       },
       {
         path: "tasks",
-        element: <Tasks/>,
+        element: <Tasks />,
       },
     ],
   },
 ]);
 
 function App() {
+  const queryClient = new QueryClient();
   return (
     <>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
     </>
   );
 }
