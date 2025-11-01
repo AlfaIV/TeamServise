@@ -3,6 +3,12 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
+  server: {
+    port: 1000,
+    host: 'localhost',
+    strictPort: true, 
+    open: true,
+  },
   test: {
     globals: true,
     environment: 'happy-dom',
