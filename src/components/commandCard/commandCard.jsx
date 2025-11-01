@@ -27,6 +27,7 @@ const CommandCard = ({name, description, imgSrc}) => {
         <Card sx={{ maxWidth: 300}}>
           <CardActionArea
             id="card__button"
+            data-testid="commandCard-CardActionArea"
             aria-controls={open ? "basic-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}

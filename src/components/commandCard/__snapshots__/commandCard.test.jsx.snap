@@ -1,0 +1,139 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`commandCard - тесты: > корретно сохраняет HTML-разметку компонента 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiContainer-root MuiContainer-maxWidthXs css-mzavur-MuiContainer-root"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-o8onhm-MuiPaper-root-MuiCard-root"
+      style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+    >
+      <button
+        aria-haspopup="true"
+        class="MuiButtonBase-root MuiCardActionArea-root css-coyn9m-MuiButtonBase-root-MuiCardActionArea-root"
+        data-testid="commandCard-CardActionArea"
+        id="card__button"
+        tabindex="0"
+        type="button"
+      >
+        <img
+          alt="user"
+          class="MuiCardMedia-root MuiCardMedia-media MuiCardMedia-img css-1kuwa16-MuiCardMedia-root"
+          height="250"
+          src="https://gagaru.club/uploads/posts/2023-06/thumbs/1685605786_gagaru-club-p-rabota-risunok-vkontakte-9.png"
+        />
+        <div
+          class="MuiCardContent-root css-1lt5qva-MuiCardContent-root"
+        >
+          <div
+            class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom css-1f9xtph-MuiTypography-root"
+          >
+            Команда
+          </div>
+          <p
+            class="MuiTypography-root MuiTypography-body2 css-1wle3ir-MuiTypography-root"
+          >
+            Описание команды
+          </p>
+        </div>
+        <span
+          class="MuiCardActionArea-focusHighlight css-1h5un5t-MuiCardActionArea-focusHighlight"
+        />
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`commandCard - тесты: > сравнение разметки с снапшотом 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiContainer-root MuiContainer-maxWidthXs css-mzavur-MuiContainer-root"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-o8onhm-MuiPaper-root-MuiCard-root"
+      style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+    >
+      <button
+        aria-haspopup="true"
+        class="MuiButtonBase-root MuiCardActionArea-root css-coyn9m-MuiButtonBase-root-MuiCardActionArea-root"
+        data-testid="commandCard-CardActionArea"
+        id="card__button"
+        tabindex="0"
+        type="button"
+      >
+        <img
+          alt="user"
+          class="MuiCardMedia-root MuiCardMedia-media MuiCardMedia-img css-1kuwa16-MuiCardMedia-root"
+          height="250"
+          src="https://gagaru.club/uploads/posts/2023-06/thumbs/1685605786_gagaru-club-p-rabota-risunok-vkontakte-9.png"
+        />
+        <div
+          class="MuiCardContent-root css-1lt5qva-MuiCardContent-root"
+        >
+          <div
+            class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom css-1f9xtph-MuiTypography-root"
+          >
+            Команда
+          </div>
+          <p
+            class="MuiTypography-root MuiTypography-body2 css-1wle3ir-MuiTypography-root"
+          >
+            Описание команды
+          </p>
+        </div>
+        <span
+          class="MuiCardActionArea-focusHighlight css-1h5un5t-MuiCardActionArea-focusHighlight"
+        />
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`commandCard - тесты: > сравнение разметки со снапоштом 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiContainer-root MuiContainer-maxWidthXs css-mzavur-MuiContainer-root"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-o8onhm-MuiPaper-root-MuiCard-root"
+      style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+    >
+      <button
+        aria-haspopup="true"
+        class="MuiButtonBase-root MuiCardActionArea-root css-coyn9m-MuiButtonBase-root-MuiCardActionArea-root"
+        data-testid="commandCard-CardActionArea"
+        id="card__button"
+        tabindex="0"
+        type="button"
+      >
+        <img
+          alt="user"
+          class="MuiCardMedia-root MuiCardMedia-media MuiCardMedia-img css-1kuwa16-MuiCardMedia-root"
+          height="250"
+          src="https://gagaru.club/uploads/posts/2023-06/thumbs/1685605786_gagaru-club-p-rabota-risunok-vkontakte-9.png"
+        />
+        <div
+          class="MuiCardContent-root css-1lt5qva-MuiCardContent-root"
+        >
+          <div
+            class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom css-1f9xtph-MuiTypography-root"
+          >
+            Команда
+          </div>
+          <p
+            class="MuiTypography-root MuiTypography-body2 css-1wle3ir-MuiTypography-root"
+          >
+            Описание команды
+          </p>
+        </div>
+        <span
+          class="MuiCardActionArea-focusHighlight css-1h5un5t-MuiCardActionArea-focusHighlight"
+        />
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

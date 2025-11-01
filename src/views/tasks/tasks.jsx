@@ -42,69 +42,69 @@ const Tasks = () => {
 
   const [openModal, setOpenModal] = useState(false);
 
-  async function getTask() {
-    try {
-      const teams = await axios.get("http://10.4.56.94:3000/team");
-      // console.log("Данные по командам:", teams.data);
-      const tasks = await axios.get("http://10.4.56.94:3000/task");
-      // console.log("Данные по задачам:", tasks.data);
-      tasks.data.forEach((task) => {
-        switch (task.status) {
-          case "To Do":
-            setTasks((prevState) => ({
-              ...prevState,
-              plan: [
-                ...prevState.plan,
-                { name: task.title, task: task.description },
-              ],
-            }));
-            break;
-          case "In Progress":
-            setTasks((prevState) => ({
-              ...prevState,
-              do: [
-                ...prevState.do,
-                { name: task.title, task: task.description },
-              ],
-            }));
-            break;
-          case "Interview":
-            setTasks((prevState) => ({
-              ...prevState,
-              check: [
-                ...prevState.check,
-                { name: task.title, task: task.description },
-              ],
-            }));
-            break;
-          case "Completed":
-            setTasks((prevState) => ({
-              ...prevState,
-              done: [
-                ...prevState.done,
-                { name: task.title, task: task.description },
-              ],
-            }));
-            break;
-          default:
-            break;
-        }
-      });
-      return {tasks: tasks.data, teams: teams.data};
-    } catch (error) {
-      console.error("Ошибка при получении данных задач:", error);
-    }
-  }
+  // async function getTask() {
+  //   try {
+  //     const teams = await axios.get("http://10.4.56.94:3000/team");
+  //     // console.log("Данные по командам:", teams.data);
+  //     const tasks = await axios.get("http://10.4.56.94:3000/task");
+  //     // console.log("Данные по задачам:", tasks.data);
+  //     tasks.data.forEach((task) => {
+  //       switch (task.status) {
+  //         case "To Do":
+  //           setTasks((prevState) => ({
+  //             ...prevState,
+  //             plan: [
+  //               ...prevState.plan,
+  //               { name: task.title, task: task.description },
+  //             ],
+  //           }));
+  //           break;
+  //         case "In Progress":
+  //           setTasks((prevState) => ({
+  //             ...prevState,
+  //             do: [
+  //               ...prevState.do,
+  //               { name: task.title, task: task.description },
+  //             ],
+  //           }));
+  //           break;
+  //         case "Interview":
+  //           setTasks((prevState) => ({
+  //             ...prevState,
+  //             check: [
+  //               ...prevState.check,
+  //               { name: task.title, task: task.description },
+  //             ],
+  //           }));
+  //           break;
+  //         case "Completed":
+  //           setTasks((prevState) => ({
+  //             ...prevState,
+  //             done: [
+  //               ...prevState.done,
+  //               { name: task.title, task: task.description },
+  //             ],
+  //           }));
+  //           break;
+  //         default:
+  //           break;
+  //       }
+  //     });
+  //     return {tasks: tasks.data, teams: teams.data};
+  //   } catch (error) {
+  //     console.error("Ошибка при получении данных задач:", error);
+  //   }
+  // }
 
-  const { data, isLoading, isError } = useQuery("task", getTask);
+  // const { data, isLoading, isError } = useQuery("task", getTask);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  // if (isLoading) {
+  //   return <div>Loading...</div>;
+  // }
 
-  if (isError) {
-    return <div>Error</div>;
-  }
+  // if (isError) {
+  //   return <div>Error</div>;
+  // }
 
   return (
     <Container maxWidth="xl" sx={{ marginTop: 4 }}>
