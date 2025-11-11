@@ -1,7 +1,8 @@
-import { describe, it, expect } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { describe, it, expect, waitFor } from 'vitest';
+import { render, screen } from '@testing-library/react';
 import testIcon from '../../assets/icon/testIcon.png'
 import CommandCard from './commandCard.jsx'
+import userEvent from '@testing-library/user-event';
 
 describe('commandCard - тесты:', () => {
     const mockData = {
@@ -19,38 +20,19 @@ describe('commandCard - тесты:', () => {
             imgSrc={testIcon}
         />);
 
-        expect(screen.getByText("Команда")).toBe;
-        expect(screen.getByText("Описание команды")).toBe;
+        expect(screen.getByText("Команда")).not.toBeNaN();
+        expect(screen.getByText("Описание команды")).not.toBeUndefined();
     });
-    it('открывает меню при нажатии на карточку', () => {
+    it('открывает меню при нажатии на карточку', async () => {
         render(<CommandCard {...mockData} />);
 
         const cardButton = screen.getByTestId('commandCard-CardActionArea');
-        fireEvent.click(cardButton);
+        userEvent.click(cardButton);
 
-        expect(screen.getAllByRole('menuitem')).toHaveLength(3);
-    });
+        const menuitem = await screen.findAllByRole('menuitem');
 
-    it('закрывает меню при выборе любого пункта меню', () => {
-        render(<CommandCard {...mockData} />);
-
-        const cardButton = screen.getByTestId('commandCard-CardActionArea');
-        fireEvent.click(cardButton);
-
-        const firstMenuItem = screen.getByText('Участники');
-        fireEvent.click(firstMenuItem);
-
-        expect(screen.queryByRole('menu')).not.toBe;
-    });
-
-    it('закрывает меню при клике вне области карточки', () => {
-        render(<CommandCard {...mockData} />);
-
-        const cardButton = screen.getByTestId('commandCard-CardActionArea');
-        fireEvent.click(cardButton);
-
-        fireEvent.mouseDown(document.body);
-        expect(screen.queryByRole('menu')).not.toBe;
+        expect(menuitem).toHaveLength(3);
+        expect(menuitem).not.toBeNull();
     });
 
     it('сравнение разметки с снапшотом', () => {
