@@ -4,14 +4,16 @@ import Grid from "@mui/material/Grid";
 import Item from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import { Button } from "@mui/material";
+import { Button, Tooltip, IconButton } from "@mui/material";
+import DeleteIcon from '@mui/icons-material/Delete';
+import LikeCounter from "../../components/likeCounter/likeCounter";
 
 const User = () => {
   return (
     <>
       <Container maxWidth="lg" sx={{ marginTop: 4 }}>
         <Typography variant="h3" gutterBottom margin={"normal"}>
-          Cтраница профиля сотрудника 
+          Cтраница профиля сотрудника
         </Typography>
         <Grid container spacing={10} display="flex" alignItems="center" justifyContent="center" >
           <Grid item xs={12} md={3} >
@@ -59,6 +61,12 @@ const User = () => {
             >
               Проект: "Сервис управления командами"
             </Typography>
+            <Tooltip title="Delete">
+              <IconButton>
+                <DeleteIcon />
+              </IconButton>
+            </Tooltip>
+            <LikeCounter initalLikeNumber={0}/>
           </Grid>
         </Grid>
 
